@@ -1,0 +1,32 @@
+a function that takes a list of strings, 
+and returns a string that is all those strings concatenated together
+1. use ''.join(string) to concatenate all items in the list
+
+a function that takes a list of integers, 
+and returns a new list with every other element from the original list, 
+starting with the first element
+1. assign a new list to old list using slicing with step set to 2
+
+a function that determines the index of the 3rd occurrence of a given character in a string. 
+For instance, if the given character is 'x' and the string is 'axbxcdxex', 
+the function should return 6 (the index of the 3rd 'x'). 
+If the given character does not occur at least 3 times, return None
+1. Set iterator to 0
+2. Iterate through the string
+3. if current letter == target letter, increment iterator by 1
+4. if iterator reaches 3, get index of current letter
+5. else: return none
+
+a function that takes two lists of numbers and returns the result of merging the lists. 
+The elements of the first list should become the elements at 
+the even indexes of the returned list, 
+while the elements of the second list should become the elements at the odd indexes.
+You may assume that both list arguments have the same number of elements.
+1. Create iterator for list1
+2. Create iterator for list2
+3. initialize empty list
+4. while loop until iterators are both == length of the two lists
+5. append element 0 of list2 to element 0 of new list
+6. increment list2 iterator
+7. append element 0 of list1 to element 1 of new list
+8. increment list1 iterator
