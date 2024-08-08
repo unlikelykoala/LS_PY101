@@ -1,0 +1,26 @@
+{
+    "again" : {
+        "first" : "Would you like to run calculator again?\ny/n: ",
+        "invalid" : "Try again. Enter y or n.\nWould you like to run calculator again?\ny/n: "
+    },
+    "fix_zero" : {
+        "choice" : "Error: cannot divide by 0.\n'Enter 1 to change the second integer or Enter 2 to change the operation: ",
+        "invalid" : "Oops! Try again.\n'Enter 1 to change the second integer or Enter 2 to change the operation: "
+    },
+    "num1" : {
+        "first" : "Enter first integer: ",
+        "invalid" : "Please use integers only. First integer: "
+    },
+    "num2" : {
+        "first" : "Enter second integer: ",
+        "invalid" : "Please use integers only. Second integer: ",
+        "zero" : "Please use non-zero integers only.\nSecond integer: "
+    },
+    "operation" : {
+        "first" : "What operation would you like to perform?\n1: addition, 2: subtraction, 3: multiplication, 4: division\nOperation: ",
+        "invalid" : "Try again. Enter 1, 2, 3, or 4.\n1: addition, 2: subtraction, 3: multiplication, 4: division\nOperation: ",
+        "zero" : "Try again. Enter 1, 2, or 3.\n1: addition, 2: subtraction, 3: multiplication\nOperation: "
+    },
+    "welcome" : "Welcome to the calculator!"
+
+}
