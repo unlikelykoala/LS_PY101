@@ -26,7 +26,7 @@ def invalid_input(input_, input_type):
     match input_type:
         case 'number':
             try:
-                int(input_)
+                float(input_)
             except ValueError:
                 return True
             return False
@@ -42,7 +42,7 @@ def get_operand():
     n = prompt(MESSAGES[lang]['num']['first'])
     while invalid_input(n, 'number'):
         n = prompt(MESSAGES[lang]['num']['invalid'])
-    return int(n)
+    return float(n)
 
 def get_operator():
     operator = prompt(MESSAGES[lang]['operation']['first'])
@@ -58,7 +58,7 @@ def zerodiv_check(number, operation):
         if fix == '1':
             while invalid_input(number, 'number') or number == 0:
                 number = prompt(MESSAGES[lang]['num']['invalid'])
-            number = int(number)
+            number = float(number)
         elif fix == '2':
             while invalid_input(operation, 'operator') or operation == '4':
                 operation = prompt(MESSAGES[lang]['operation']['zero'])
@@ -100,7 +100,7 @@ def main():
         case '3':
             print(f'{num1} * {num2} = {num1 * num2}')
         case '4':
-            print(f'{num1} / {num2} = {int(num1 / num2)}')
+            print(f'{num1} / {num2} = {num1 / num2}')
 
     if run_again(): main()
     else: return 0
