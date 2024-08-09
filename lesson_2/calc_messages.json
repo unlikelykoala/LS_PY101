@@ -1,26 +1,46 @@
 {
-    "again" : {
-        "first" : "Would you like to run calculator again?\ny/n: ",
-        "invalid" : "Try again. Enter y or n.\nWould you like to run calculator again?\ny/n: "
+    "en": {
+        "again" : {
+            "first" : "Would you like to run calculator again?\ny/n: ",
+            "invalid" : "Try again. Enter y or n.\nWould you like to run calculator again?\ny/n: "
+        },
+        "fix_zero" : {
+            "choice" : "Error: cannot divide by 0.\nEnter 1 to change the second integer or Enter 2 to change the operation: ",
+            "invalid" : "Oops! Try again.\nEnter 1 to change the second integer or Enter 2 to change the operation: "
+        },
+        "goodbye" : "Thanks for using the calculator program!",
+        "num" : {
+            "first" : "Enter an integer: ",
+            "invalid" : "Please use integers only. Integer: ",
+            "zero" : "Please use non-zero integers only.\nSecond integer: "
+        },
+        "operation" : {
+            "first" : "What operation would you like to perform?\n1: addition, 2: subtraction, 3: multiplication, 4: division\nOperation: ",
+            "invalid" : "Try again. Enter 1, 2, 3, or 4.\n1: addition, 2: subtraction, 3: multiplication, 4: division\nOperation: ",
+            "zero" : "Try again. Enter 1, 2, or 3.\n1: addition, 2: subtraction, 3: multiplication\nOperation: "
+        },
+        "welcome" : "Welcome to the calculator!"
     },
-    "fix_zero" : {
-        "choice" : "Error: cannot divide by 0.\n'Enter 1 to change the second integer or Enter 2 to change the operation: ",
-        "invalid" : "Oops! Try again.\n'Enter 1 to change the second integer or Enter 2 to change the operation: "
-    },
-    "num1" : {
-        "first" : "Enter first integer: ",
-        "invalid" : "Please use integers only. First integer: "
-    },
-    "num2" : {
-        "first" : "Enter second integer: ",
-        "invalid" : "Please use integers only. Second integer: ",
-        "zero" : "Please use non-zero integers only.\nSecond integer: "
-    },
-    "operation" : {
-        "first" : "What operation would you like to perform?\n1: addition, 2: subtraction, 3: multiplication, 4: division\nOperation: ",
-        "invalid" : "Try again. Enter 1, 2, 3, or 4.\n1: addition, 2: subtraction, 3: multiplication, 4: division\nOperation: ",
-        "zero" : "Try again. Enter 1, 2, or 3.\n1: addition, 2: subtraction, 3: multiplication\nOperation: "
-    },
-    "welcome" : "Welcome to the calculator!"
-
+    "es": {
+        "again" : {
+            "first" : "¿Le gustaría ejecutar la calculadora nuevamente?\ns/n: ",
+            "invalid" : "Intentar otra vez. Introduzca y o n.\n¿Le gustaría ejecutar la calculadora nuevamente?\ns/n: "
+        },
+        "fix_zero" : {
+            "choice" : "Error: no se puede dividir por 0.\nIngrese 1 para cambiar el segundo número entero o Ingrese 2 para cambiar la operación: ",
+            "invalid" : "¡Ups! Intentar otra vez.\nIngrese 1 para cambiar el segundo número entero o Ingrese 2 para cambiar la operación: "
+        },
+        "goodbye" : "¡¡Gracias por usar el programa de calculadora!",
+        "num" : {
+            "first" : "Introduzca un número entero: ",
+            "invalid" : "Utilice únicamente números enteros. Número entero: ",
+            "zero" : "Utilice únicamente números enteros distintos de cero.\nSegundo entero: "
+        },
+        "operation" : {
+            "first" : "¿Qué operación te gustaría realizar?\n1: suma, 2: resta, 3: multiplicación, 4: división\nOperación: ",
+            "invalid" : "Intentar otra vez. Ingrese 1, 2, 3 o 4.\n1: suma, 2: resta, 3: multiplicación, 4: división\nOperación: ",
+            "zero" : "Intentar otra vez. Ingrese 1, 2 o 3.\n1: suma, 2: resta, 3: multiplicación\nOperación: "
+        },
+        "welcome" : "¡Bienvenidos a la calculadora!"
+    }
 }

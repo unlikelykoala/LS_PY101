@@ -1,42 +1,96 @@
 import json
-import os
+from os import system
+from sys import exit
 
-# Open the JSON file for reading
-with open('file.json', 'r') as file:
+# Open the json file for reading
+with open('calc_messages.json', 'r') as file:
     MESSAGES = json.load(file)
 
-def calc():
-    # clear screen and welcome
-    os.system('clear')
-    print(MESSAGES['welcome'])
+def prompt(message):
+    return input(f'==> {message}')
+
+def get_language():
+    lang_choice = prompt('Press 1 for English or '
+                         'Presione 2 para español: ')
+    while lang_choice not in ['1', '2']:
+        lang_choice = prompt('Try again. Press 1 for English\n'
+                      'Presione 2 para español: ')
+    if lang_choice == '1':
+        return 'en'
+    else: return 'es'
+
+# get the language for MESSAGES dict key
+lang = get_language()
+
+def invalid_input(input_, input_type):
+    match input_type:
+        case 'number':
+            try:
+                int(input_)
+            except ValueError:
+                return True
+            return False
+        case 'operator':
+            if input_ not in ('1', '2', '3', '4'):
+                return True
+            return False
+        case _:
+            print('Error: data_type entered incorrectly in the prompt call')
+            exit(1)
+
+def get_operand():
+    n = prompt(MESSAGES[lang]['num']['first'])
+    while invalid_input(n, 'number'):
+        n = prompt(MESSAGES[lang]['num']['invalid'])
+    return int(n)
+
+def get_operator():
+    operator = prompt(MESSAGES[lang]['operation']['first'])
+    while invalid_input(operator, 'operator'):
+        operator = prompt(MESSAGES[lang]['operation']['invalid'])
+    return operator
+
+def zerodiv_check(number, operation):
+    while number == 0 and operation == '4':
+        fix = prompt(MESSAGES[lang]['fix_zero']['choice'])
+        while fix not in ['1', '2']:
+            fix = prompt(MESSAGES[lang]['fix_zero']['invalid'])
+        if fix == '1':
+            while invalid_input(number, 'number') or number == 0:
+                number = prompt(MESSAGES[lang]['num']['invalid'])
+            number = int(number)
+        else:
+            while invalid_input(operation, 'operator') or operation == 4:
+                operation = prompt(MESSAGES[lang]['operation']['zero'])
+    return number, operation
+
+def run_again():
+    again = prompt(MESSAGES[lang]['again']['first'])
+    if lang == 'en':
+        while again.casefold() not in ['y', 'n']:
+            again = prompt(MESSAGES[lang]['again']['invalid'])
+    else:
+        while again.casefold() not in ['s', 'n']:
+            again = prompt(MESSAGES[lang]['again']['invalid'])
+    if again.casefold() in ['s','y']:
+        return True
+    print(MESSAGES[lang]['goodbye'])
+    return False
+        
+
+def main():
+    # clear screen, language selection, welcome
+    system('clear')
+    print(MESSAGES[lang]['welcome'])
 
     # get operands and operator, validate input
-    num1 = prompt(MESSAGES['num1']['first'])
-    while invalid_number(num1):
-        num1 = prompt(MESSAGES['num1']['invalid'])
-    num1 = int(num1)
-
-    num2 = prompt(MESSAGES['num2']['first'])
-    while invalid_number(num2):
-        num2 = prompt(MESSAGES['num2']['invalid'])
-    num2 = int(num2)
-
-    op = prompt(MESSAGES['operation']['first'])
-    while invalid_operator(op):
-        op = prompt(MESSAGES['operation']['invalid'])
+    num1 = get_operand()
+    num2 = get_operand()
+    op = get_operator()
 
     # Check for zero division
-    while num2 == 0 and op == '4':
-        fix = prompt(MESSAGES['fix_zero']['choice'])
-        while fix not in ['1', '2']:
-            fix = prompt(MESSAGES['fix_zero']['invalid'])
-        if fix == '1':
-            while invalid_number(num2) or num2 == 0:
-                num2 = prompt(MESSAGES['num2']['mistake'])
-            num2 = int(num2)
-        else:
-            while invalid_operator(op) or op == 4:
-                op = prompt(MESSAGES['operation']['zero'])
+    if num2 == 0 and op == '4':
+        num2, op = zerodiv_check(num2, op)
 
     match op:
         case '1':
@@ -48,30 +102,8 @@ def calc():
         case '4':
             print(f'{num1} / {num2} = {int(num1 / num2)}')
 
-    again = prompt('Would you like to run calculator again?\n'
-                   'y/n: ')
-    while not again or again.casefold() not in ['y', 'n']:
-        again = prompt(MESSAGES['again']['invalid'])
-    if again == 'y':
-        return calc()
-    print('Thanks for using the calc() function!')
-    return 0
-
-def invalid_number(n_str):
-    try:
-        int(n_str)
-    except ValueError:
-        return True
-
-    return False
-
-def invalid_operator(operator):
-    if operator not in ('1', '2', '3', '4'):
-        return True
-    return False
-
-def prompt(message):
-    return input(f'==> {message}')
+    if run_again(): main()
+    else: return 0
 
 
-calc()
+main()
