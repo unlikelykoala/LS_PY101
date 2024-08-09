@@ -1,6 +1,6 @@
 import json
+import sys
 from os import system
-from sys import exit
 
 # Open the json file for reading
 with open('calc_messages.json', 'r') as file:
@@ -17,10 +17,10 @@ def get_language():
                       'Presione 2 para español: ')
     if lang_choice == '1':
         return 'en'
-    else: return 'es'
+    return 'es'
 
 # get the language for MESSAGES dict key
-lang = get_language()
+LANG = get_language()
 
 def invalid_input(input_, input_type):
     match input_type:
@@ -36,52 +36,52 @@ def invalid_input(input_, input_type):
             return False
         case _:
             print('Error: data_type entered incorrectly in the prompt call')
-            exit(1)
+            sys.exit(1)
 
 def get_operand():
-    n = prompt(MESSAGES[lang]['num']['first'])
+    n = prompt(MESSAGES[LANG]['num']['first'])
     while invalid_input(n, 'number'):
-        n = prompt(MESSAGES[lang]['num']['invalid'])
+        n = prompt(MESSAGES[LANG]['num']['invalid'])
     return float(n)
 
 def get_operator():
-    operator = prompt(MESSAGES[lang]['operation']['first'])
+    operator = prompt(MESSAGES[LANG]['operation']['first'])
     while invalid_input(operator, 'operator'):
-        operator = prompt(MESSAGES[lang]['operation']['invalid'])
+        operator = prompt(MESSAGES[LANG]['operation']['invalid'])
     return operator
 
 def zerodiv_check(number, operation):
     while number == 0 and operation == '4':
-        fix = prompt(MESSAGES[lang]['fix_zero']['choice'])
+        fix = prompt(MESSAGES[LANG]['fix_zero']['choice'])
         while fix not in ['1', '2']:
-            fix = prompt(MESSAGES[lang]['fix_zero']['invalid'])
+            fix = prompt(MESSAGES[LANG]['fix_zero']['invalid'])
         if fix == '1':
             while invalid_input(number, 'number') or number == 0:
-                number = prompt(MESSAGES[lang]['num']['invalid'])
+                number = prompt(MESSAGES[LANG]['num']['invalid'])
             number = float(number)
         elif fix == '2':
             while invalid_input(operation, 'operator') or operation == '4':
-                operation = prompt(MESSAGES[lang]['operation']['zero'])
+                operation = prompt(MESSAGES[LANG]['operation']['zero'])
     return number, operation
 
 def run_again():
-    again = prompt(MESSAGES[lang]['again']['first'])
-    if lang == 'en':
+    again = prompt(MESSAGES[LANG]['again']['first'])
+    if LANG == 'en':
         while again.casefold() not in ['y', 'n']:
-            again = prompt(MESSAGES[lang]['again']['invalid'])
+            again = prompt(MESSAGES[LANG]['again']['invalid'])
     else:
         while again.casefold() not in ['s', 'n']:
-            again = prompt(MESSAGES[lang]['again']['invalid'])
+            again = prompt(MESSAGES[LANG]['again']['invalid'])
     if again.casefold() in ['s','y']:
         return True
-    print(MESSAGES[lang]['goodbye'])
+    print(MESSAGES[LANG]['goodbye'])
     return False
-        
+
 
 def main():
     # clear screen, language selection, welcome
     system('clear')
-    print(MESSAGES[lang]['welcome'])
+    print(MESSAGES[LANG]['welcome'])
 
     # get operands and operator, validate input
     num1 = get_operand()
@@ -102,8 +102,8 @@ def main():
         case '4':
             print(f'{num1} / {num2} = {num1 / num2}')
 
-    if run_again(): main()
-    else: return 0
+    if run_again():
+        main()
 
 
 main()
