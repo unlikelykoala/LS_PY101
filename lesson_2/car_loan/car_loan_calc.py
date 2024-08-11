@@ -29,12 +29,14 @@ def invalid_input(input_, type_):
                 return True
     return False
 
-def monthly_payment(princ, mpr, duration_months):
-    if duration_months == 0:
-        return principal * (1 + mpr)
-    elif mpr == 0:
-        return principal / loan_duration_months
-    return principal * (mpr / (1 - ((1 + mpr)**(-loan_duration_months))))
+def monthly_payment(princ, rate, months):
+    if rate == 0 and months == 0:
+        return princ
+    if months == 0:
+        return princ * (1 + rate)
+    if mpr == 0:
+        return princ / months
+    return princ * (mpr / (1 - ((1 + rate)**(-months))))
 
 
 # Get and validate principal, apr, duration
@@ -46,11 +48,12 @@ while invalid_input(apr, 'apr'):
     apr = input(MESSAGES['invalid'] + MESSAGES['input']['apr'])
 loan_duration_years = input(MESSAGES['input']['loan_duration_years'])
 while invalid_input(loan_duration_years, 'duration'):
-    loan_duration_years = input(MESSAGES['invalid'] + MESSAGES['input']['loan_duration_years'])
+    loan_duration_years = input(MESSAGES['invalid']
+                                + MESSAGES['input']['loan_duration_years'])
 
 # Convert to useable format
 principal = float(principal)
-mpr = (float(apr) / 100) / 12  # monthly percentage rate in decimal format 
+mpr = (float(apr) / 100) / 12  # monthly percentage rate in decimal format
 loan_duration_months = math.ceil(float(loan_duration_years) * 12)
 
 # Calculate monthly interest rate and payment
@@ -58,4 +61,3 @@ monthly_payment = monthly_payment(principal, mpr, loan_duration_months)
 
 print(f'Your monthly payment will be USD ${monthly_payment:.2f} '
       f'over the course of {loan_duration_months} months.',)
-
