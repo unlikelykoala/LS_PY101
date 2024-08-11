@@ -1,0 +1,9 @@
+{
+    "input" : {
+        "apr" : "Please enter the annual percentage rate (e.g., 4.7): ",
+        "loan_duration_years" : "Please enter the loan duration in years (e.g., 4 or 2.7): ",
+        "principal" : "Please enter the loan principal in USD (e.g., 10237.20): USD $ "
+    },
+    "invalid" : "Oops! There was an error with your input.\n",
+    "welcome" : "Welcome to the car loan calculator!"
+}
