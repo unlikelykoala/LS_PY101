@@ -59,5 +59,5 @@ loan_duration_months = math.ceil(float(loan_duration_years) * 12)
 # Calculate monthly interest rate and payment
 monthly_payment = monthly_payment(principal, mpr, loan_duration_months)
 
-print(f'Your monthly payment will be USD ${monthly_payment:.2f} '
+print(f'\n==>Your monthly payment will be USD ${monthly_payment:.2f} '
       f'over the course of {loan_duration_months} months.',)
