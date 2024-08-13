@@ -1,0 +1,36 @@
+{
+    "computer_name" : {
+        "1" : "Broncobot",
+        "2" : "Saddletron",
+        "3" : "Maverick Mark I",
+        "4" : "Eniac MCoy"
+    },
+    "error" : {
+        "1" : "Hold your horses! Seems there's a hitch in yer giddy-up. Give it another whirl.",
+        "2" : "Well, shucks! Somethin' ain't quite right. How 'bout givin' it another go?",
+        "3" : "Dang it! Looks like that choice done gone haywire. Best try yer luck again.",
+        "4" : "Whoops-a-daisy! That train went off the tracks. Reckon you oughta try again."
+    },
+    "verb" : {
+        "rock" : {
+            "scissors" : "crushes",
+            "lizard" : "smushes"
+        },
+        "scissors" : {
+            "paper" : "cut",
+            "lizard" : "decapitate"
+        },
+        "paper" : {
+            "rock" : "covers",
+            "Spock" : "disproves"
+        },
+        "lizard" : {
+            "paper" : "eats",
+            "Spock" : "poisons"
+        },
+        "Spock" : {
+            "rock" : "vaporizes",
+            "scissors" : "smashes"
+        }
+    }
+}
