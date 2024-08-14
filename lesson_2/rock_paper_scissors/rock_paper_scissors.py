@@ -38,10 +38,7 @@ def see_instructions():
     return False
 
 def keep_going():
-    keep_on = input('Press c to continue: ')
-    while not keep_on or keep_on.casefold() != 'c':
-        keep_on = input('Just lemme know when you\'re ready!\n'
-                         'Press c to continue: ')
+    keep_on = input('(Press Enter to continue)')
     system('clear')
 
 def display_instructions():
@@ -142,7 +139,7 @@ def play_again(champ):
         response = input('Whoopsie-daisy! How about tryin\' that again?'
                      'You up for another go? (y/n) ')
 
-    if response.casefold == 'y':
+    if response.casefold() == 'y':
         COMPUTER = MESSAGES['computer_name']\
             [random.choice(['1', '2', '3', '4'])]
         main()
@@ -165,10 +162,10 @@ def best_of_five():
     scores[winner] += 1
     display_scores()
 
-    if scores[winner] == WIN_NUMBER:
+    if scores[winner] == WIN_NUMBER and (winner == NAME or winner == COMPUTER):
         end = play_again(winner)
         if end == 'end':
-            return 0
+            return
 
     print('\nNext round!')
     best_of_five()
