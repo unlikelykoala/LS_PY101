@@ -1,8 +1,8 @@
-import cowsay
 import json
 import random
 import time
 from os import system
+import cowsay
 from tabulate import tabulate
 
 # Open the json file for reading
@@ -30,7 +30,7 @@ def see_instructions():
     while response.casefold() not in ['y', 'n']:
         response = input('Whoopsie-daisy! How about tryin\' that again?\n'
                      'Wanna see that there explainer? (y/n) ')
-    
+
     if response.casefold() == 'y':
         system('clear')
         return True
@@ -38,12 +38,14 @@ def see_instructions():
     return False
 
 def keep_going():
-    keep_going = input('Press c to continue: ')
-    while not keep_going or keep_going.casefold() != 'c':
-        keep_going = input('Just lemme know when you\'re ready!\n'
+    keep_on = input('Press c to continue: ')
+    while not keep_on or keep_on.casefold() != 'c':
+        keep_on = input('Just lemme know when you\'re ready!\n'
                          'Press c to continue: ')
+    system('clear')
 
 def display_instructions():
+    system('clear')
     for win_tool, dict_ in MESSAGES['verb'].items():
         for lose_tool, action in dict_.items():
             print(f'--{win_tool} {action} {lose_tool}')
@@ -62,11 +64,11 @@ def is_invalid(choice_):
 
 def get_player_choice():
     system('clear')
-    print(f'Choose yer tool of reckoning:')
+    print('Choose yer tool of reckoning:')
     for index, weapon in enumerate(VALID_CHOICES, start=1):
         print(f'{index}. {weapon}', sep=', ')
     print('6. See instructions\n')
-    
+
     choice = input('Pick a number \'tween 1 and 6: ')
     print()
 
@@ -80,16 +82,16 @@ def get_player_choice():
 
         while is_invalid(choice):
             print(MESSAGES['error'][random.choice(['1', '2', '3', '4'])])
-            choice = input(f'Choose yer tool of reckoning!\n'
+            choice = input('Choose yer tool of reckoning!\n'
                         'Pick a number \'tween 1 and 6: ')
-    
+
     return VALID_CHOICES[int(choice) - 1]
 
 def get_winner(player, computer):
     if player == computer:
         return 'Tie', player, computer
-    
-    elif (player == 'rock' and computer in ['scissors', 'lizard']) or \
+
+    if (player == 'rock' and computer in ['scissors', 'lizard']) or \
         (player == 'scissors' and computer in ['paper', 'lizard']) or \
         (player == 'paper' and computer in ['rock', 'Spock']) or \
         (player == 'lizard' and computer in ['paper', 'Spock']) or \
@@ -99,13 +101,13 @@ def get_winner(player, computer):
     return COMPUTER, computer, player
 
 def countdown():
-    countdown = [3, 2, 1]
-    for n in countdown:
+    count = [3, 2, 1]
+    for n in count:
         print(f'{n}... ', sep='')
         time.sleep(0.6)
     print('Draw!')
     time.sleep(0.4)
-    system('clear')  
+    system('clear')
 
 def display_winner(champ, win_choice, lose_choice):
     if champ == 'Tie':
@@ -129,7 +131,8 @@ def play_again(champ):
     if NAME == champ:
         print('That\'s 3 out of 5! You\'re the new champ!')
         time.sleep(0.5)
-        print(f'You beat {COMPUTER}! Looks like there\'s a new sheriff in town!')
+        print(f'You beat {COMPUTER}! '
+              'Looks like there\'s a new sheriff in town!')
     if COMPUTER == champ:
         print(f'Game over! Sorry, {NAME}, that\'s 3 out of 5!')
         time.sleep(0.5)
@@ -138,12 +141,14 @@ def play_again(champ):
     while response.casefold() not in['y', 'n']:
         response = input('Whoopsie-daisy! How about tryin\' that again?'
                      'You up for another go? (y/n) ')
-    
+
     if response.casefold == 'y':
-        COMPUTER = MESSAGES['computer_name'][random.choice(['1', '2', '3', '4'])]
+        COMPUTER = MESSAGES['computer_name']\
+            [random.choice(['1', '2', '3', '4'])]
         main()
     else:
-        print(cowsay.cow('So long, space cowboy!'))
+        system('clear')
+        cowsay.cow('So long, space cowboy!')
         return 'end'
 
 def best_of_five():
@@ -151,7 +156,8 @@ def best_of_five():
 
     computer_choice = random.choice(VALID_CHOICES)
 
-    winner, win_weapon, lose_weapon = get_winner(player_choice, computer_choice)
+    winner, win_weapon, lose_weapon = \
+        get_winner(player_choice, computer_choice)
     countdown()
     display_winner(winner, win_weapon, lose_weapon)
 
@@ -163,15 +169,17 @@ def best_of_five():
         end = play_again(winner)
         if end == 'end':
             return 0
-    
+
     print('\nNext round!')
     best_of_five()
 
 def main():
     time.sleep(0.7)
-    print(f'\nHowdy, {NAME}! Welcome to Rock, Paper, Scissors -- Cowboy Edition!\n')
+    print(f'\nHowdy, {NAME}! '
+          'Welcome to Rock, Paper, Scissors -- Cowboy Edition!\n')
     time.sleep(1)
-    print(f'Ol\' {COMPUTER} is the meanest, most mustachioed machine this side of the net,\n'
+    print(f'Ol\' {COMPUTER} is the meanest, most mustachioed machine '
+          'this side of the net,\n'
           'and he\'s itchin\' for a showdown with you.\n'
     )
     time.sleep(1)
@@ -183,8 +191,8 @@ def main():
     see = see_instructions()
     if see:
         display_instructions()
-    
+
     best_of_five()
-    
+
 
 main()
