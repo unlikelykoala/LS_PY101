@@ -1,0 +1,77 @@
+{
+    "computer_name" : {
+        "1" : "Broncobot",
+        "2" : "Saddletron",
+        "3" : "Maverick Mark I",
+        "4" : "Eniac MCoy"
+    },
+    "countdown" : "Draw!",
+    "disp_winner" : {
+        "tie" : {
+            "1" : "It's a tie!\n",
+            "2" : "{win_choice} does nothing to {lose_choice}"
+        },
+        "else" : "{champ} wins!"
+    },
+    "error" : {
+        "1" : "Hold your horses! Seems there's a hitch in yer giddy-up. Give it another whirl.",
+        "2" : "Well, shucks! Somethin' ain't quite right. How 'bout givin' it another go?",
+        "3" : "Dang it! Looks like that choice done gone haywire. Best try yer luck again.",
+        "4" : "Whoops-a-daisy! That train went off the tracks. Reckon you oughta try again."
+    },
+    "game_over" : {
+        "player_wins" : {
+            "1" : "That's 3 out of 5! You're the new champ!",
+            "2" : "You beat {computer}! Looks like there's a new sheriff in town!"
+        },
+        "pc_wins" : {
+            "1" : "Game over! Sorry, {player}, that's 3 out of 5!",
+            "2" : "Looks like {computer} is still the best in the biz."
+        }
+    },
+    "get_name" : {
+        "1" : "Howdy, partner! What's yer name? ",
+        "2" : "Don't be shy! What's yer name? "
+    },
+    "intro" : {
+        "1" : "\nHowdy, {player}!\nWelcome to Rock, Paper, Scissors -- Cowboy Edition!\n",
+        "2" : "Ol' {computer} is the meanest, most mustachioed machine this side of the net,\nand he's itchin' for a showdown with you.\n",
+        "3" : "Best of 5 -- Rock, Paper, Scissors, Lizard, Spock!\nTime to see who's the sharpest shot in town!\n"
+    },
+    "keep_going" : "(Press Enter to continue)",
+    "play_again" : {
+        "1" : "You up for another go? (y/n) ",
+        "2" : "So long, space cowboy!"
+    },    
+    "player_choice" : {
+        "1" : "Choose yer tool of reckoning:",
+        "2" : "Pick a number 'tween 1 and 6: ",
+        "error" : ""
+    }, 
+    "rules" : {
+        "see" : "Wanna take a gander at them instructions? (y/n) ",
+        "error" : "Whoopsie-daisy! How about tryin' that again?\nWanna see that there explainer? (y/n) "
+    },
+    "verb" : {
+        "rock" : {
+            "scissors" : "crushes",
+            "lizard" : "smushes"
+        },
+        "scissors" : {
+            "paper" : "cut",
+            "lizard" : "decapitate"
+        },
+        "paper" : {
+            "rock" : "covers",
+            "Spock" : "disproves"
+        },
+        "lizard" : {
+            "paper" : "eats",
+            "Spock" : "poisons"
+        },
+        "Spock" : {
+            "rock" : "vaporizes",
+            "scissors" : "smashes"
+        }
+    }
+}
